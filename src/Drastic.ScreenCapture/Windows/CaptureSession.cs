@@ -12,7 +12,6 @@ namespace Drastic.ScreenCapture
 {
     public class CaptureSession : ICaptureSession
     {
-        private BitmapEncoder encoder;
         private IWinCaptureSurface captureSurface;
         private GraphicsCaptureSession? session;
         private GraphicsCaptureItem item;
