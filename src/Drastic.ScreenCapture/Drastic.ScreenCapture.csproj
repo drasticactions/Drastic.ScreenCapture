@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="../MultiTargeting.targets" />
+	<PropertyGroup>
+		<TargetFrameworks>net7.0-macos;net7.0-windows10.0.19041</TargetFrameworks>
+		<EnableWindowsTargeting>true</EnableWindowsTargeting>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<WarningsAsErrors>nullable</WarningsAsErrors>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+		<CreatePackage>false</CreatePackage>
+		<UseSGen>false</UseSGen>
+	</PropertyGroup>
+	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+		<CreatePackage>false</CreatePackage>
+		<UseSGen>false</UseSGen>
+	</PropertyGroup>
+	<ItemGroup>
+		<AdditionalFiles Include="..\..\stylecop.json" Link="stylecop.json" />
+	</ItemGroup>
+	<ItemGroup Condition="$(TargetFramework.Contains('-windows')) == true ">
+		<PackageReference Include="SharpDX.Direct3D11" Version="4.2.0" />
+		<PackageReference Include="System.Runtime.InteropServices.WindowsRuntime" Version="4.3.0" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Remove="Mac\" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="Mac\" />
+	</ItemGroup>
+</Project>
